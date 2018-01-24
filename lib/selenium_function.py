@@ -3,7 +3,6 @@ from selenium import webdriver
 
 
 class SeleniumFunction:
-
     def __init__(self, driver_path):
         self.driver = webdriver.Chrome(driver_path)
 
@@ -11,7 +10,7 @@ class SeleniumFunction:
         self.driver.quit()
         self.driver.close()
 
-    def get(self, url):
+    def access_url(self, url):
         self.driver.get(url)
 
     def login(self, account, password, account_class, password_class, submit_class):
@@ -23,3 +22,6 @@ class SeleniumFunction:
         password_input.send_keys(password)
 
         submit_button.submit()
+
+    def get_page_source(self):
+        return self.driver.page_source
