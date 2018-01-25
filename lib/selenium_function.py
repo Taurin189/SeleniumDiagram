@@ -7,8 +7,8 @@ class SeleniumFunction:
         self.driver = webdriver.Chrome(driver_path)
 
     def __del__(self):
-        self.driver.quit()
         self.driver.close()
+        self.driver.quit()
 
     def access_url(self, url):
         self.driver.get(url)

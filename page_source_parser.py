@@ -8,9 +8,10 @@ class PageSourceParser:
     def __init__(self, url, page_source):
         self.page_source = page_source
         soup = BeautifulSoup(page_source, "html.parser")
-        title = soup.find("title")
+        title = soup.title.string
 
         WebPage(
+            id=url,
             title=title,
             url=url,
         ).save()
