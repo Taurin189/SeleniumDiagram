@@ -12,7 +12,10 @@ def main():
     selenium_func = SeleniumFunction(driver_path)
     selenium_func.access_url(target_url)
     page_source = selenium_func.get_page_source()
-    PageSourceParser(target_url, page_source)
+    parser = PageSourceParser(page_source)
+    parser.save_from_page_source(target_url)
+
+
 
 
 if __name__ == '__main__':
