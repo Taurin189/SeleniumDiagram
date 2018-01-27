@@ -14,7 +14,7 @@ def main():
     page_source = selenium_func.get_page_source()
     parser = PageSourceParser(page_source)
     parser.save_from_page_source(target_url)
-
+    parser.get_related_netloc_list()
 
 
 

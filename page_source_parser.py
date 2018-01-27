@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from bs4 import BeautifulSoup
+from urllib.parse import urlparse
 
 from entity.web_page_entity import WebPage
 
@@ -25,6 +26,20 @@ class PageSourceParser:
             url=url,
         ).save()
 
-    def get_link_list(self):
-        link_list = self.soup.find_all("a")
-        return link_list
+    def get_related_netloc_list(self):
+        link_html_list = self.get_link_html_list()
+        netloc_list = []
+        for link_html in link_html_list:
+            link = link_html.get("href")
+            o = urlparse(link)
+            if o.netloc == "":
+                print("same netloc : " + str(o))
+                continue
+            if o.netloc not in netloc_list:
+                netloc_list.append(o.netloc)
+
+        return netloc_list
+
+    def get_link_html_list(self):
+        link_html_list = self.soup.find_all("a")
+        return link_html_list
