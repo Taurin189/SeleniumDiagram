@@ -16,7 +16,5 @@ def main():
     parser.save_from_page_source(target_url)
     parser.get_related_netloc_list()
 
-
-
 if __name__ == '__main__':
     main()
