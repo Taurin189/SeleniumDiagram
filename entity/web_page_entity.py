@@ -9,4 +9,4 @@ class WebPage(MongoModel):
     id = fields.CharField(primary_key=True)
     url = fields.CharField()
     title = fields.CharField()
-    web_link_ids = fields.ListField(fields.CharField())
+    web_link = fields.ListField(fields.CharField())

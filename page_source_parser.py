@@ -26,6 +26,25 @@ class PageSourceParser:
             url=url,
         ).save()
 
+    def save_from_page_and_link(self, url, link_list):
+        title = self.soup.title.string
+
+        WebPage(
+            id=url,
+            title=title,
+            url=url,
+            web_link=link_list
+        ).save()
+
+    def get_web_page_object(self, url):
+        try:
+            web_page = WebPage.objects.get({'_id': url})
+        except WebPage.DoesNotExist:
+            return ''
+        else:
+            return web_page.title
+
+
     def get_related_netloc_list(self):
         link_html_list = self.get_link_html_list()
         netloc_list = []
