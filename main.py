@@ -19,6 +19,11 @@ def make_url(selenium_func, target_url):
     selenium_func.access_url(target_url)
     page_source = selenium_func.get_page_source()
     parser = PageSourceParser(page_source)
+
+    if target_url != selenium_func.get_current_url():
+        parser.save_from_page_and_link(target_url, [selenium_func.get_current_url()])
+        return
+
     destination_list = parser.get_related_netloc_list()
     parser.save_from_page_and_link(target_url, destination_list)
 

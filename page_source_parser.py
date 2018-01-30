@@ -44,7 +44,6 @@ class PageSourceParser:
         else:
             return web_page.title
 
-
     def get_related_netloc_list(self):
         link_html_list = self.get_link_html_list()
         netloc_list = []
